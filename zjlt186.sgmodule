@@ -1,0 +1,12 @@
+#!name=浙江联通签到
+#!desc=浙江联通微信公众号 -> 抢福利 -> 签到有礼 -> 点击签到
+#!category=xream
+
+
+[Script]
+浙江联通 定时签到 = type=cron, cronexp="6 10,20 * * *", script-path=zj186.js, timeout=60, engine=jsc
+
+浙江联通 获取 Cookie = type=http-request, pattern=^https:\/\/wechat\.zj186\.com\/wechat-route-rest-1\.0\/api\/daySign\/do, script-path=zj186.js, requires-body=true, timeout=60, engine=jsc
+
+[MITM]
+hostname = %APPEND% wechat.zj186.com
